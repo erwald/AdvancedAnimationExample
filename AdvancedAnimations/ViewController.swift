@@ -52,7 +52,7 @@ class ViewController: UIViewController {
                 animator2 = UIViewPropertyAnimator(duration: 1, curve: .easeOut) {
                     animatableView2.square.frame = animatableView2.square.frame.offsetBy(dx: animatableView2.animationDistanceX, dy: 0)
                 }
-                animator2.pauseAnimation()
+                animator2.pauseAnimation() // Pausing converts the animation curve to be linear.
 
             case .changed:
                 // When panning, update the animation progress.
@@ -60,7 +60,8 @@ class ViewController: UIViewController {
                 animator2.fractionComplete = translation.x / animatableView2.animationDistanceX // Linear.
 
             case .ended:
-                // When a pan ends, finish the animation by animating to the end point.
+                // When a pan ends, finish the animation by animating to the end point. Here the
+                // animation curve is converted back to .easeOut (changing the time not the value).
                 animator2.continueAnimation(withTimingParameters: nil, durationFactor: 0)
 
             case .cancelled, .failed, .possible:
