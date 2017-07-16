@@ -114,11 +114,5 @@ class ViewController: UIViewController {
 
         stackView.addArrangedSubview(animatableView3)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-
 }
 
